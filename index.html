@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Neha – UI/UX Designer</title>
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -12,1226 +13,43 @@
       href="https://fonts.googleapis.com/css2?family=Istok+Web:wght@700&display=swap"
       rel="stylesheet"
     />
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/TextPlugin.min.js"></script>
     <script>
       gsap.registerPlugin(ScrollTrigger, TextPlugin);
     </script>
-
-    <style>
-      /* Smooth rendering */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Makes animations smoother */
-      .reveal,
-      .reveal-up,
-      .crazy-up,
-      .parallax {
-        will-change: transform, opacity, filter;
-      }
-
-      /* ===== Fonts ===== */
-      @font-face {
-        font-family: "Miama";
-        src: url("./fonts/Miama-Regular.otf") format("opentype"),
-          url("./fonts/Miama-Regular.ttf") format("truetype");
-        font-display: swap;
-      }
-
-      @font-face {
-        font-family: "TypeWriter";
-        src: url("./fonts/TypeWriter-Regular.ttf") format("truetype");
-        font-display: swap;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-      }
-
-      /* ===== Layout ===== */
-      .container {
-        max-width: 1300px;
-        margin: 0 auto;
-        padding: 40px 20px;
-        display: flex;
-        align-items: center;
-        gap: 40px;
-      }
-
-      .left {
-        flex: 1;
-      }
-
-      .right {
-        flex: 1.5;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      /* ===== Typography ===== */
-      .left p:first-of-type {
-        font-family: "Miama", cursive;
-        font-size: 64px;
-        color: #ff6a00;
-        margin: 0 0 10px;
-      }
-
-      h1 {
-        font-family: "Istok Web", sans-serif;
-        font-size: 64px;
-        line-height: 1.1;
-        margin: 0;
-      }
-
-      .left p:last-of-type {
-        font-family: "TypeWriter", monospace;
-        font-size: 20px;
-        line-height: 1.6;
-        color: #4a4a4a;
-        margin-top: 16px;
-      }
-
-      /* ===== Button ===== */
-      .cta {
-        margin-top: 20px;
-        display: inline-flex;
-        padding: 12px 18px;
-        background: yellow;
-        border: 2px solid #000;
-        font-weight: 800;
-        border-radius: 6px;
-        box-shadow: 4px 4px 0 #000;
-        text-decoration: none;
-        color: #000;
-      }
-
-      /* ===== Image ===== */
-      .right img {
-        width: 100%;
-        max-width: 750px;
-        height: auto;
-        object-fit: contain;
-      }
-
-      /* ================= MOBILE RESPONSIVE ================= */
-      @media (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          text-align: center;
-          padding: 24px 16px;
-        }
-
-        .left p:first-of-type {
-          font-size: 42px;
-        }
-
-        h1 {
-          font-size: 38px;
-        }
-
-        .left p:last-of-type {
-          font-size: 16px;
-        }
-
-        .cta {
-          margin-left: auto;
-          margin-right: auto;
-        }
-
-        .right img {
-          max-width: 100%;
-          margin-top: 24px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 32px;
-        }
-
-        .left p:first-of-type {
-          font-size: 36px;
-        }
-      }
-
-      .about-me-section {
-        position: relative;
-        overflow: hidden;
-        padding: clamp(30px, 5vw, 70px);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: clamp(24px, 5vw, 60px);
-        background: #cfc7fc;
-      }
-
-      /* blobs */
-      .blob {
-        position: absolute;
-        z-index: 1;
-        pointer-events: none;
-        user-select: none;
-      }
-
-      .blob-left {
-        width: clamp(220px, 30vw, 420px);
-        left: -120px;
-        bottom: -120px;
-      }
-
-      .blob-right {
-        width: clamp(260px, 34vw, 520px);
-        right: -80px;
-        top: 100%;
-        transform: translateY(-50%) scale(1.4);
-      }
-
-      /* content above blobs */
-      .about-me-left,
-      .about-me-right {
-        position: relative;
-        z-index: 2;
-      }
-
-      .about-me-left {
-        flex: 1;
-        max-width: 650px;
-        min-width: 280px;
-      }
-
-      .about-title {
-        font-family: "TypeWriter", "American Typewriter", monospace;
-        font-size: 35px;
-        font-weight: 400;
-        margin: 0 0 24px;
-        padding-bottom: 6px;
-        border-bottom: 2px solid #000;
-        display: inline-block;
-        color: #111;
-      }
-
-      .about-text p {
-        font-family: "TypeWriter", "American Typewriter", monospace;
-        font-size: 25px;
-        font-weight: 400;
-        line-height: 1.4;
-        margin: 0;
-        color: #111;
-        max-width: 60ch;
-        text-align: justify;
-      }
-
-      /* RIGHT IMAGE - desktop */
-      .about-me-right {
-        flex: 1;
-        position: absolute;
-        top: 100px;
-        right: clamp(16px, 3vw, 60px);
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-      }
-
-      .about-me-right img {
-        width: min(520px, 100%);
-        height: auto;
-        object-fit: contain;
-        display: block;
-      }
-      /* ================= MOBILE RESPONSIVE ================= */
-
-      @media (max-width: 900px) {
-        .about-me-section {
-          flex-direction: column;
-          align-items: flex-start;
-          padding: 24px 16px;
-        }
-
-        /* ✅ IMPORTANT: remove absolute positioning on mobile */
-        .about-me-right {
-          position: relative;
-          top: auto;
-          right: auto;
-          width: 100%;
-          margin-top: 24px;
-          justify-content: center;
-        }
-
-        .about-me-right img {
-          width: min(420px, 100%);
-        }
-
-        /* blobs adjusted so they don’t look too huge */
-        .blob-right {
-          top: 75%;
-          right: -180px;
-          transform: translateY(-50%) scale(1.1);
-        }
-
-        .blob-left {
-          left: -160px;
-          bottom: -160px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .about-title {
-          font-size: 24px;
-        }
-
-        .about-text p {
-          font-size: 18px;
-        }
-
-        .about-me-right img {
-          width: min(340px, 100%);
-        }
-      }
-      /* ================= SECTION 3 ================= */
-
-      .section-3 {
-        background: #f6e6d6;
-        padding: 60px 0;
-        overflow: hidden;
-      }
-
-      .section-3 .wrap {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 15px;
-      }
-
-      .section-3 .card {
-        display: flex;
-        gap: 34px;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 520px;
-      }
-
-      .section-3 .sec3-illustration {
-        flex: 1.1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-right: 20px;
-      }
-
-      .section-3 .sec3-images {
-        position: relative;
-        width: min(560px, 100%);
-        aspect-ratio: 1 / 1;
-        overflow: visible;
-      }
-
-      /* COMMON */
-      .section-3 .sec3-images img {
-        position: absolute;
-        display: block;
-      }
-
-      .section-3 .sec3-images img:first-child {
-        inset: 0; /* top:0 right:0 bottom:0 left:0 */
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-      }
-
-      .section-3 .sec3-images img:last-child {
-        width: 72%; /* adjust if you want bigger/smaller */
-        height: auto;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        object-fit: contain;
-        z-index: 2;
-      }
-
-      /* RIGHT CONTENT */
-      .section-3 .sec3-content {
-        flex: 1;
-        min-width: 320px;
-      }
-
-      /* TITLES */
-      .section-3 .section-title {
-        font-size: 34px;
-        font-weight: 600;
-        margin: 0 0 14px;
-        padding-bottom: 6px;
-        border-bottom: 2px solid #111;
-        display: inline-block;
-      }
-
-      /* PILLS */
-      .section-3 .pills {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin: 8px 0 34px;
-      }
-
-      .section-3 .pill {
-        padding: 10px 18px;
-        background: #e9d2b8;
-        border: 2px solid #111;
-        border-radius: 999px;
-        box-shadow: 3px 3px 0 #111;
-        font-size: 16px;
-        white-space: nowrap;
-      }
-
-      /* EXPERIENCE */
-      .section-3 .exp-text {
-        font-size: 18px;
-        margin-top: 12px;
-        position: relative;
-      }
-
-      .section-3 .exp-text::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -10px;
-        width: 64px;
-        height: 6px;
-        background: #f1c400;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      @media (max-width: 900px) {
-        .section-3 .card {
-          flex-direction: column;
-          gap: 24px;
-        }
-
-        .section-3 .sec3-images {
-          width: 360px;
-          height: 260px;
-        }
-
-        .section-3 .sec3-images img:first-child {
-          height: 180px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .section-3 .sec3-images {
-          width: 300px;
-          height: 220px;
-        }
-
-        .section-3 .sec3-images img:first-child {
-          height: 160px;
-        }
-
-        .section-3 .pill {
-          font-size: 14px;
-          padding: 9px 14px;
-        }
-      }
-
-      .sec3-decor {
-        position: absolute;
-        width: 90px;
-        height: auto;
-        z-index: 1;
-        pointer-events: none; /* prevents clicks */
-        opacity: 0.9;
-      }
-
-      /* Individual positions */
-      .decor-top-left {
-        top: 30px;
-        left: 40px;
-      }
-
-      .decor-top-right {
-        top: 40px;
-        right: 60px;
-      }
-
-      .decor-bottom-left {
-        bottom: 30px;
-        left: 50px;
-      }
-
-      .decor-bottom-right {
-        bottom: 40px;
-        right: 60px;
-      }
-
-      /* Ensure main content is above decorations */
-      .section-3 .wrap {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* ================= SECTION 4 ================= */
-      #section-4.sec4-portfolio {
-        background: #f6f3ff; /* light lavender like screenshot */
-        padding: 44px 16px 60px;
-      }
-
-      #section-4 .sec4-title {
-        text-align: center;
-        font-size: 22px;
-        font-weight: 500;
-        margin: 0 0 28px;
-        color: #222;
-        font-family: "TypeWriter", "American Typewriter", monospace;
-        font-size: 35px;
-        font-weight: 400;
-      }
-
-      /* Grid */
-      #section-4 .sec4-grid {
-        max-width: 860px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 34px; /* row gap / column gap */
-        align-items: start;
-      }
-
-      /* Image cards */
-      #section-4 .sec4-card {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 2px;
-        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.1);
-        background: #fff;
-        object-fit: cover;
-      }
-
-      /* If you want them to look like poster cards with equal height */
-      #section-4 .sec4-card {
-        aspect-ratio: 3 / 4; /* keeps all cards uniform */
-        object-fit: cover;
-      }
-
-      /* Mobile */
-      @media (max-width: 700px) {
-        #section-4 .sec4-grid {
-          grid-template-columns: 1fr;
-          gap: 22px;
-          max-width: 420px;
-        }
-
-        #section-4 .sec4-title {
-          font-size: 20px;
-        }
-      }
-
-      /* ================= SECTION 5 ================= */
-      /* ================= SECTION 5 – PROJECTS ================= */
-
-      #section-5 {
-        position: relative;
-        background: linear-gradient(
-          180deg,
-          #fff7ef 0%,
-          #fffaf3 55%,
-          #ffffff 100%
-        );
-        padding: 110px 20px 90px;
-        overflow: hidden;
-      }
-
-      /* Content container */
-      #section-5 .sec5-container {
-        max-width: 1120px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
-      }
-
-      /* ================= DECORATIVE BACKGROUNDS ================= */
-
-      #section-5 .sec5-bg {
-        position: absolute;
-        left: 0;
-        width: 100%;
-        pointer-events: none;
-        z-index: 1;
-      }
-
-      #section-5 .sec5-bg img {
-        width: 100%;
-        display: block;
-      }
-
-      #section-5 .sec5-bg-top {
-        top: -10px;
-        opacity: 0.6;
-      }
-
-      #section-5 .sec5-bg-mid {
-        top: 40px;
-        opacity: 0.35;
-      }
-
-      /* ================= TITLE ================= */
-
-      #section-5 .sec5-title {
-        text-align: center;
-        font-size: 34px;
-        font-weight: 700;
-        margin: 0 0 10px;
-        color: #121212;
-
-        /* TYPEWRITER FONT */
-        font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", monospace;
-        letter-spacing: 0.3px;
-      }
-
-      #section-5 .sec5-title span {
-        position: relative;
-        display: inline-block;
-      }
-
-      #section-5 .sec5-title span::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        width: 100%;
-        height: 3px;
-        border-radius: 4px;
-        background: #121212;
-      }
-
-      /* Subtitle */
-      #section-5 .sec5-subtitle {
-        text-align: center;
-        margin: 0 auto 55px;
-        max-width: 640px;
-        font-size: 15px;
-        line-height: 1.7;
-        color: #4b4b4b;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          sans-serif;
-      }
-
-      /* ================= GRID ================= */
-
-      #section-5 .sec5-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 34px;
-      }
-
-      /* ================= CARD ================= */
-
-      #section-5 .sec5-card {
-        background: rgba(255, 255, 255, 0.85);
-        border: 1px solid rgba(18, 18, 18, 0.08);
-        border-radius: 16px;
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
-        transition: transform 220ms ease, box-shadow 220ms ease,
-          border-color 220ms ease;
-      }
-
-      #section-5 .sec5-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
-        border-color: rgba(18, 18, 18, 0.16);
-      }
-
-      /* ================= IMAGE ================= */
-
-      #section-5 .sec5-thumb {
-        position: relative;
-        width: 100%;
-        aspect-ratio: 16 / 10;
-        overflow: hidden;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      }
-
-      #section-5 .sec5-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-        transition: transform 0.4s ease;
-      }
-
-      #section-5 .sec5-card:hover .sec5-thumb img {
-        transform: scale(1.05);
-      }
-
-      /* Optional subtle overlay */
-      #section-5 .sec5-thumb::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.04);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-
-      #section-5 .sec5-card:hover .sec5-thumb::after {
-        opacity: 1;
-      }
-
-      /* ================= CARD INFO ================= */
-
-      #section-5 .sec5-info {
-        padding: 16px 16px 18px;
-      }
-
-      /* CARD TITLE – TYPEWRITER */
-      #section-5 .sec5-info h3 {
-        margin: 0 0 6px;
-        font-size: 16px;
-        font-weight: 700;
-        color: #111;
-        letter-spacing: 0.3px;
-
-        font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", monospace;
-      }
-
-      #section-5 .sec5-card:hover .sec5-info h3 {
-        text-decoration: underline;
-        text-underline-offset: 4px;
-      }
-
-      /* Description */
-      #section-5 .sec5-info p {
-        margin: 0;
-        font-size: 13px;
-        color: #5b5b5b;
-        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
-          sans-serif;
-      }
-
-      /* ================= RESPONSIVE ================= */
-
-      @media (max-width: 950px) {
-        #section-5 .sec5-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        #section-5 .sec5-title {
-          font-size: 30px;
-        }
-      }
-
-      @media (max-width: 560px) {
-        #section-5 {
-          padding: 90px 16px 70px;
-        }
-
-        #section-5 .sec5-grid {
-          grid-template-columns: 1fr;
-          gap: 22px;
-        }
-
-        #section-5 .sec5-title {
-          font-size: 24px;
-        }
-      }
-
-      /* =========================
-   SECTION 6 (Random Stuff)
-   ========================= */
-
-      /* =========================
-   SECTION 6 (Collage like screenshot)
-   ========================= */
-      .section-6 {
-        background: #e45716;
-        padding: 70px 20px;
-        overflow: hidden;
-      }
-
-      .section-6,
-      .section-6 * {
-        font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", monospace;
-      }
-
-      .section-6 .sec6-wrap {
-        max-width: 1150px;
-        margin: 0 auto;
-        position: relative;
-        min-height: 640px;
-      }
-
-      /* Title in top center */
-      .section-6 .sec6-title {
-        color: #fff;
-        font-size: 28px;
-        font-weight: 500;
-        margin: 0;
-        position: absolute;
-        top: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-        white-space: nowrap;
-      }
-
-      /* Common item styling */
-      .section-6 .sec6-item {
-        position: absolute;
-      }
-
-      /* Make images crisp + consistent */
-      .section-6 .sec6-item img {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-
-      /* Labels: placed like screenshot (near the item) */
-      .section-6 .sec6-label {
-        position: absolute;
-        left: 0;
-        bottom: -26px;
-        margin: 0;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 400;
-        font-family: "Miama", cursive; /* if you have Miama font already */
-        letter-spacing: 0.2px;
-        white-space: nowrap;
-      }
-
-      /* -------------------------
-   EXACT COLLAGE POSITIONS
-   ------------------------- */
-
-      /* Left tote bag (slight tilt) */
-      .section-6 .sec6-tote-left {
-        left: 20px;
-        top: 140px;
-        width: 250px;
-        transform: rotate(-10deg);
-      }
-      .section-6 .sec6-tote-left .sec6-label {
-        left: 20px;
-        bottom: -34px;
-        transform: rotate(10deg); /* counter to read nicely */
-      }
-
-      /* T-shirt (top middle, small tilt) */
-      .section-6 .sec6-tshirt {
-        left: 50%;
-        top: 135px;
-        width: 190px;
-        transform: translateX(-50%) rotate(-6deg);
-      }
-      .section-6 .sec6-tshirt .sec6-label {
-        left: 55px;
-        bottom: -34px;
-        transform: rotate(6deg);
-      }
-
-      /* Book mockup (top right, straight) */
-      .section-6 .sec6-book-top {
-        right: 20px;
-        top: 140px;
-        width: 420px;
-        transform: rotate(0deg);
-      }
-
-      /* Bottom book (center bottom, straight) */
-      .section-6 .sec6-book-bottom {
-        left: 50%;
-        bottom: 40px;
-        width: 420px;
-        transform: translateX(-50%) rotate(0deg);
-      }
-
-      /* White tote (bottom right, slight tilt) */
-      .section-6 .sec6-tote-right {
-        right: 45px;
-        bottom: 55px;
-        width: 210px;
-        transform: rotate(8deg);
-      }
-
-      /* If you want label on white tote like screenshot style,
-   add a label element in HTML; otherwise ignore */
-      .section-6 .sec6-tote-right .sec6-label {
-        left: 40px;
-        bottom: -32px;
-        transform: rotate(-8deg);
-      }
-
-      /* =========================
-   RESPONSIVE (keeps collage clean)
-   ========================= */
-      @media (max-width: 1050px) {
-        .section-6 .sec6-wrap {
-          min-height: 700px;
-        }
-        .section-6 .sec6-book-top {
-          width: 360px;
-        }
-        .section-6 .sec6-book-bottom {
-          width: 380px;
-        }
-      }
-
-      @media (max-width: 820px) {
-        .section-6 .sec6-wrap {
-          min-height: 980px;
-        }
-
-        .section-6 .sec6-title {
-          font-size: 22px;
-          top: 15px;
-        }
-
-        /* Stack the right book so it doesn't crush layout */
-        .section-6 .sec6-book-top {
-          position: relative;
-          top: auto;
-          right: auto;
-          width: 100%;
-          max-width: 520px;
-          margin: 290px auto 0;
-        }
-
-        .section-6 .sec6-tote-left {
-          left: 14px;
-          top: 125px;
-          width: 210px;
-        }
-
-        .section-6 .sec6-tshirt {
-          top: 120px;
-          width: 165px;
-        }
-
-        .section-6 .sec6-book-bottom {
-          width: 100%;
-          max-width: 480px;
-          bottom: 190px;
-        }
-
-        .section-6 .sec6-tote-right {
-          right: 18px;
-          bottom: 45px;
-          width: 180px;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .section-6 {
-          padding: 55px 14px;
-        }
-
-        .section-6 .sec6-title {
-          font-size: 18px;
-          white-space: normal;
-          text-align: center;
-          width: 100%;
-        }
-
-        .section-6 .sec6-tote-left {
-          width: 175px;
-          top: 145px;
-          left: 10px;
-        }
-
-        .section-6 .sec6-tshirt {
-          width: 140px;
-          top: 150px;
-          left: 70%;
-        }
-
-        .section-6 .sec6-book-bottom {
-          bottom: 210px;
-          width: 92%;
-        }
-
-        .section-6 .sec6-tote-right {
-          width: 155px;
-          right: 10px;
-        }
-      }
-
-      /* =============================
-   SECTION 7 – CONTACT
-   ============================= */
-      .section-7 {
-        width: 100vw;
-        display: grid;
-        grid-template-columns: 460px 1fr; /* adjust left strip width if needed */
-        align-items: stretch; /* IMPORTANT: both columns stretch same height */
-        background: #fffaf3;
-      }
-
-      /* TYPEWRITER FONT */
-      .section-7,
-      .section-7 * {
-        font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", monospace;
-      }
-
-      /* LEFT SIDE (image must match section height) */
-      .section-7-left {
-        height: 100%;
-        min-height: 100%;
-        display: flex; /* allows img to stretch */
-        overflow: hidden; /* trims overflow cleanly */
-      }
-
-      /* Make the image fill full height of the section */
-      .section-7-left img {
-        width: 100%;
-        height: 100%;
-        min-height: 100%;
-        object-fit: cover; /* fills the strip nicely */
-        object-position: left center; /* keeps pattern aligned to left */
-        display: block;
-      }
-
-      /* RIGHT SIDE */
-      .section-7-right {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-      }
-
-      /* Inner spacing + alignment of form area */
-      .section-7-inner {
-        width: 100%;
-        max-width: 760px;
-        padding: 90px 110px;
-      }
-
-      /* TITLE */
-      .section-7-title {
-        margin: 0;
-        font-size: 32px;
-        font-weight: 700;
-        color: #e45716;
-        position: relative;
-        padding-bottom: 12px;
-      }
-
-      .section-7-title::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 4px;
-        width: 190px;
-        height: 2px;
-        background: #e45716;
-      }
-
-      /* SUBTITLE */
-      .section-7-subtitle {
-        margin: 18px 0 42px;
-        font-size: 11px;
-        letter-spacing: 2px;
-        color: #e45716;
-        text-transform: uppercase;
-      }
-
-      /* FORM */
-      .section-7-form {
-        width: 100%;
-        max-width: 560px;
-      }
-
-      .section-7-form input,
-      .section-7-form textarea {
-        width: 100%;
-        background: transparent;
-        border: none;
-        outline: none;
-        padding: 14px 0 10px;
-        margin-bottom: 34px;
-        font-size: 13px;
-        color: #e45716;
-        border-bottom: 2px solid rgba(228, 87, 22, 0.65);
-      }
-
-      .section-7-form textarea {
-        resize: none;
-        min-height: 90px;
-      }
-
-      .section-7-form input::placeholder,
-      .section-7-form textarea::placeholder {
-        color: rgba(228, 87, 22, 0.45);
-      }
-
-      /* BUTTON */
-      .section-7-btn {
-        margin-top: 6px;
-        padding: 10px 36px;
-        font-size: 12px;
-        background: #e45716;
-        color: #111;
-        border: 2px solid #111;
-        cursor: pointer;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-      }
-
-      .section-7-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-      }
-
-      /* =============================
-   RESPONSIVE
-   ============================= */
-
-      @media (max-width: 1000px) {
-        .section-7 {
-          grid-template-columns: 360px 1fr;
-        }
-
-        .section-7-inner {
-          padding: 70px 50px;
-        }
-      }
-
-      @media (max-width: 720px) {
-        .section-7 {
-          grid-template-columns: 1fr;
-        }
-
-        /* In mobile: show pattern on top */
-        .section-7-left {
-          height: 280px;
-        }
-
-        .section-7-inner {
-          padding: 45px 18px 60px;
-        }
-
-        .section-7-form {
-          max-width: 100%;
-        }
-      }
-
-      /* =========================
-   FOOTER (Typewriter)
-   ========================= */
-
-      /* Footer wrapper */
-      .footer-8 {
-        background: #000;
-        padding: 18px 0;
-        width: 100%;
-        position: relative;
-        z-index: 10;
-        overflow: hidden; /* keeps inner content inside footer */
-      }
-
-      /* Typewriter font */
-      .footer-8,
-      .footer-8 * {
-        font-family: "Courier New", Courier, ui-monospace, SFMono-Regular, Menlo,
-          Monaco, Consolas, "Liberation Mono", monospace;
-      }
-
-      /* Layout */
-      .footer-8__inner {
-        max-width: 1100px;
-        margin: 0 auto;
-        width: 100%;
-        padding-inline: 22px; /* IMPORTANT: ensures spacing inside viewport */
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      /* Left text */
-      .footer-8__left {
-        color: #fff !important;
-        opacity: 1 !important;
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 1.2;
-      }
-
-      /* Nav */
-      .footer-8__nav {
-        display: flex;
-        gap: 34px;
-        flex-wrap: wrap;
-      }
-
-      /* Links */
-      .footer-8__link {
-        color: #fff !important;
-        opacity: 1 !important;
-        text-decoration: none;
-        font-size: 12px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        line-height: 1.2;
-        transition: opacity 0.2s ease;
-      }
-
-      .footer-8__link:hover {
-        opacity: 0.65;
-      }
-
-      /* Responsive */
-      @media (max-width: 640px) {
-        .footer-8__inner {
-          flex-direction: column;
-          gap: 10px;
-          text-align: center;
-        }
-
-        .footer-8__nav {
-          justify-content: center;
-          gap: 22px;
-        }
-      }
-    </style>
   </head>
 
   <body>
-    <div class="container">
-      <div class="left">
-        <p>Hello,</p>
-        <h1>
-          I'm Neha – <br />
-          UI/UX Designer
-          <span class="highlight-orange" style="color: #e45716"
-            >&amp; Developer</span
-          >
-        </h1>
+    <section id="home" class="home-section">
+      <div class="container">
+        <div class="left">
+          <p class="intro">Hello,</p>
 
-        <p>
-          Designing intuitive experiences that users enjoy. Building scalable
-          interfaces engineered for growth and performance.
-        </p>
+          <h1 class="hero-title">
+            I'm Neha <br />
+            <span class="role">UI/UX Designer</span>
+            <span class="highlight-orange">&amp; Developer</span>
+          </h1>
 
-        <a class="cta" href="#">View my work</a>
+          <p class="hero-subtext">
+            Designing intuitive user experiences with a designer’s eye and
+            developing scalable interfaces with a coder’s mindset.
+          </p>
+
+          <a class="cta" href="#section-4">View my work</a>
+        </div>
+
+        <div class="right">
+          <img
+            src="Group 53 (1).png"
+            alt="UI UX Designer and Developer Illustration"
+          />
+        </div>
       </div>
+    </section>
 
-      <div class="right">
-        <img src="Group 53 (1).png" alt="UI UX Illustration" />
-      </div>
-    </div>
     <section class="about-me-section">
       <!-- Blob Images -->
       <img src="Vector.png" class="blob blob-left" alt="" />
@@ -1241,23 +59,43 @@
         <h2 class="about-title">About me</h2>
         <div class="about-text">
           <p>
-            We are a passionate UI/UX designer with 1.7 years of hands-on
-            experience in crafting user-centered digital experiences. Our focus
-            is on designing intuitive, visually appealing, and functional
-            interfaces. We specialize in understanding user behavior and
-            translating ideas into meaningful designs. With a strong eye for
-            detail, we create clean layouts that enhance usability and
-            engagement. We work closely with developers and stakeholders to
-            ensure smooth design execution. Our approach balances aesthetics
-            with practical usability standards. We continuously learn and adapt
-            to evolving design trends and tools, with the goal of delivering
-            experiences that are simple, effective, and impactful.
+            We are a passionate
+            <span class="highlight-red">UI/UX Designer</span>
+            and a skilled
+            <span class="highlight-red">Coder</span>
+            with 1.7 years of hands-on experience crafting user-centered digital
+            experiences. When asked which role we prefer, the answer is simple —
+            <span class="highlight-red">both</span>. Design is our
+            <span class="highlight-red">passion</span>, and coding is our
+            <span class="highlight-red">craze</span>. When you understand design
+            and know how to build it, there’s no need to choose. We specialize
+            in creating intuitive, visually appealing interfaces and turning
+            ideas into functional, scalable solutions. With a strong eye for
+            detail and clean code practices, we bridge the gap between design
+            and development. We collaborate closely with developers and
+            stakeholders to ensure seamless execution. Our goal is simple —
+            create experiences that are
+            <span class="highlight-red">beautiful</span>,
+            <span class="highlight-red">usable</span>, and technically strong.
           </p>
         </div>
       </div>
       <!-- Right Image -->
       <div class="about-me-right">
-        <img src="image 422.png" alt="Portrait illustration" />
+        <div class="about-image-wrapper">
+          <img
+            src="../my_image.png"
+            alt="Portrait illustration"
+            style="border-radius: 50px"
+          />
+
+          <!-- White overlay box -->
+          <div class="about-image-badges">
+            <div class="about-image-badge">UI/UX Designer</div>
+            <div class="about-image-badge">1.7 Years Experience</div>
+            <div class="about-image-badge">Web Developer</div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -1275,7 +113,7 @@
         alt=""
       />
       <img
-        src="Untitled design (59) 2 (1).png"
+        src="Untitled design (59) 2 (1).png"  
         class="sec3-decor decor-bottom-left"
         alt=""
       />
@@ -1293,7 +131,6 @@
           <!-- RIGHT CONTENT -->
           <div class="sec3-content">
             <h2 class="section-title">Skills</h2>
-
             <div class="pills">
               <span class="pill">UI/UX</span>
               <span class="pill">Adobe</span>
@@ -1306,18 +143,29 @@
 
             <div class="exp">
               <h2 class="section-title">Experience</h2>
-              <div class="exp-text">
-                1.7 Years of experience in this industry
+              <div class="">1.7 Years of experience in this industry</div>
+            </div>
+
+            <div class="exp" style="margin-top: 15px">
+              <h2 class="section-title">Education</h2>
+              <div class="">
+                <strong>B.Tech – Computer Science Engineering</strong><br />
+                MIT College, Aurangabad<br />
+              </div>
+            </div>
+
+            <div class="exp" style="margin-top: 15px">
+              <div class="">
+                <strong>Higher Secondary Education</strong><br />
+                Swami Vivekanand Academy, Aurangabad<br />
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-
     <section id="section-4" class="sec4-portfolio">
       <h2 class="sec4-title">From Concept to Catalogue</h2>
-
       <div class="sec4-grid">
         <img class="sec4-card" src="matcha (9).png" alt="Design 3" />
         <img class="sec4-card" src="matcha (6).png" alt="Design 6" />
@@ -1346,7 +194,7 @@
         </p>
 
         <div class="sec5-grid">
-          <a class="sec5-card" href="#">
+          <a class="sec5-card" href="projects/hotel_projects.html">
             <div class="sec5-thumb">
               <img
                 src="Screenshot 2025-12-20 123522.png"
@@ -1359,20 +207,20 @@
             </div>
           </a>
 
-          <a class="sec5-card" href="#">
+          <a class="sec5-card" href="projects/gyno.html">
             <div class="sec5-thumb">
               <img
                 src="Screenshot 2025-12-20 135811.png"
-                alt="Mobile Banking UI"
+                alt="Dashboard Redesign UI"
               />
             </div>
             <div class="sec5-info">
-              <h3>Gynecology Doctor</h3>
-              <p>Mobile • UI Kit</p>
+              <h3>Gynecology</h3>
+              <p>Web App • UX • UI</p>
             </div>
           </a>
 
-          <a class="sec5-card" href="#">
+          <a class="sec5-card" href="./projects/prime.html">
             <div class="sec5-thumb">
               <img
                 src="Screenshot 2025-12-20 140803.png"
@@ -1395,7 +243,7 @@
             </div>
           </a>
 
-          <a class="sec5-card" href="#">
+          <a class="sec5-card" href="./projects/granuaqua.html">
             <div class="sec5-thumb">
               <img
                 src="Screenshot 2025-12-20 141817.png"
@@ -1408,7 +256,7 @@
             </div>
           </a>
 
-          <a class="sec5-card" href="#">
+          <a class="sec5-card" href="./projects/kapsol.html">
             <div class="sec5-thumb">
               <img
                 src="Screenshot 2025-12-20 142347.png"
@@ -1471,11 +319,19 @@
           <h2 class="section-7-title">Have Projects?</h2>
           <p class="section-7-subtitle">GET IN TOUCH WITH US</p>
 
-          <form class="section-7-form">
-            <input type="text" placeholder="Name" />
-            <input type="tel" placeholder="Mobile" />
-            <input type="email" placeholder="Email" />
-            <textarea placeholder="Message"></textarea>
+          <form
+            class="section-7-form"
+            action="https://formsubmit.co/nehagurnalkar@gmail.com"
+            method="POST"
+          >
+            <!-- Optional hidden fields -->
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_subject" value="New Project Inquiry" />
+
+            <input type="text" name="name" placeholder="Name" required />
+            <input type="tel" name="mobile" placeholder="Mobile" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <textarea name="message" placeholder="Message" required></textarea>
 
             <button type="submit" class="section-7-btn">Submit</button>
           </form>
