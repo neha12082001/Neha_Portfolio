@@ -602,6 +602,9 @@ h1 {
   z-index: 2;
 }
 
+.sec5-subtitle {
+  font-family: "TypeWriter", "American Typewriter", monospace;
+}
 /* ================= DECORATIVE BACKGROUNDS ================= */
 
 #section-5 .sec5-bg {
